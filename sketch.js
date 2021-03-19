@@ -28,22 +28,12 @@ function setup(){
 
     createCanvas(400,700);
 
-    bg=createSprite(200,350);
-    bg.addImage(bgImg);
-    bg.velocityX=-3;
-  
-    man=createSprite(20,560);
-    man.scale=0.35;
-    man.addAnimation("walking",walkinganim);
-
-   
-
     umbrella = new Umbrella(20,500);
     //creating drops
     if(frameCount % 150 === 0){
 
         for(var i=0; i<maxDrops; i++){
-            drops.push(new createDrop(random(0,400), random(0,400)));
+//push drops
         }
 
     }
@@ -56,10 +46,7 @@ function draw(){
 
     drawSprites();
 
-  if(bg.x<0)
-  {
-      bg.x=bg.width/2;
-  }
+  
 
     man.x=umbrella.body.position.x;
     
@@ -69,29 +56,20 @@ function draw(){
         thunderCreatedFrame=frameCount;
         thunder = createSprite(random(10,370), random(10,30), 10, 10);
         switch(rand){
-            case 1: thunder.addImage(thunder1);
-            break;
-            case 2: thunder.addImage(thunder2);
-            break; 
-            case 3: thunder.addImage(thunder3);
-            break;
-            case 4: thunder.addImage(thunder4);
-            break;
-            default: break;
+          //add images according to the random number generated
         }
         thunder.scale = random(0.3,0.6)
     }
 
     if(thunderCreatedFrame + 10 ===frameCount && thunder){
-        thunder.destroy();
+        //destroy thunder
     }
 
    // umbrella.display();
 
     //displaying rain drops
     for(var i = 0; i<maxDrops; i++){
-        drops[i].showDrop();
-        drops[i].updateY()
+      //show and update the drops
         
     }
 
